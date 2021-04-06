@@ -1,0 +1,31 @@
+<igx-nav-drawer #nav
+                [pin]="true"
+                [pinThreshold]="0"
+                [isOpen]="true"
+                (opening)="onOpening()"
+                (opened)="onOpened()"
+                (closing)="onClosing()"
+                (closed)="onClosed()">
+  <ng-template igxDrawer>
+    <span *ngFor="let page of pages"
+          igxDrawerItem
+          [routerLink]="page.url"
+          routerLinkActive
+          #link="routerLinkActive"
+          [active]="link.isActive">
+      <igx-icon>{{ page.icon }}</igx-icon>
+      <span>{{ page.name }}</span>
+    </span>
+  </ng-template>
+
+  <ng-template igxDrawerMini>
+    <span *ngFor="let page of pages"
+          igxDrawerItem
+          [routerLink]="page.url"
+          routerLinkActive
+          #link="routerLinkActive"
+          [active]="link.isActive">
+      <igx-icon>{{ page.icon }}</igx-icon>
+    </span>
+  </ng-template>
+</igx-nav-drawer>

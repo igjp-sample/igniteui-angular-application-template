@@ -1,0 +1,134 @@
+<div style="width: 100%; height: 100%; padding: 1rem;">
+    <igx-grid #grid [data]="data" [primaryKey]="'id'"
+        [autoGenerate]="false" width="100%" height="100%"
+        [locale]="'ja-JP'"
+        [displayDensity]="'compact'"
+        [allowFiltering]="true"
+        [filterMode]="'excelStyleFilter'"
+        [rowSelection]="'multiple'"
+        [exportText]="'エクスポート'"
+        [exportExcel]="true"
+        [exportExcelText]="'Excel'"
+        [exportCsv]="true"
+        [exportCsvText]="'CSV'"
+        (onToolbarExporting)="onToolbarExporting($event)"
+        [clipboardOptions]="clipboardOptions"
+        >
+<igx-grid-toolbar>
+<!-- Auto migrated template content. Please, check your bindings! -->
+
+
+          <button igxButton="icon" [disabled]="!canDelete" (click)="onDelete()">
+            <igx-icon>delete</igx-icon>
+          </button>
+          <button igxButton="icon" [disabled]="!canUndo" (click)="onUndo()">
+            <igx-icon>undo</igx-icon>
+          </button>
+          <button igxButton="icon" [disabled]="!canRedo" (click)="onRedo()">
+            <igx-icon>redo</igx-icon>
+          </button>
+          <button igxButton="icon" [disabled]="!canCommit" (click)="onCommit()">
+            <igx-icon>done_all</igx-icon>
+          </button>
+          <button igxButton="icon" [disabled]="!canClear" (click)="onClear()">
+            <igx-icon>clear</igx-icon>
+          </button>
+
+</igx-grid-toolbar>
+
+
+        <ng-container *ngFor="let column of columns">
+            <ng-container [ngSwitch]="column.field">
+              <igx-column *ngSwitchCase="'性別'"
+                          [field]="column.field"
+                          [dataType]="column.dataType"
+                          [editable]="true"
+                          [filterable]="true"
+                          [groupable]="true"
+                          [movable]="true"
+                          [pinned]="false"
+                          [resizable]="true"
+                          [sortable]="true"
+                          [disableHiding]="true">
+                <ng-template igxCellEditor let-cell="cell" #genderEditor>
+                  <igx-select [displayDensity]="grid.displayDensity"
+                              [(ngModel)]="cell.editValue"
+                              [igxFocus]="true">
+                    <igx-select-item *ngFor="let gender of ['男', '女']"
+                                     [value]="gender">
+                      {{ gender }}
+                    </igx-select-item>
+                  </igx-select>
+                </ng-template>
+                <ng-template igxExcelStyleMoving></ng-template>
+                <ng-template igxExcelStyleSorting></ng-template>
+              </igx-column>
+
+              <igx-column *ngSwitchCase="'生年月日'"
+                          [field]="column.field"
+                          [dataType]="column.dataType"
+                          [editable]="true"
+                          [filterable]="true"
+                          [groupable]="true"
+                          [movable]="true"
+                          [pinned]="false"
+                          [resizable]="true"
+                          [sortable]="true"
+                          [disableHiding]="true">
+                <ng-template igxCellEditor let-cell="cell" #dateEditor>
+                  <igx-date-picker [mode]="'dropdown'"
+                                   [labelVisibility]="false"
+                                   [locale]="grid.locale"
+                                   [mask]="'yyyy/MM/dd'"
+                                   [ngModel]="cell.editValue | dateObject"
+                                   (ngModelChange)="cell.editValue=$event"
+                                   [igxFocus]="true">
+                  </igx-date-picker>
+                </ng-template>
+                <ng-template igxExcelStyleMoving></ng-template>
+                <ng-template igxExcelStyleSorting></ng-template>
+              </igx-column>
+
+              <igx-column *ngSwitchCase="'血液型'"
+                          [field]="column.field"
+                          [dataType]="column.dataType"
+                          [editable]="true"
+                          [filterable]="true"
+                          [groupable]="true"
+                          [movable]="true"
+                          [pinned]="false"
+                          [resizable]="true"
+                          [sortable]="true"
+                          [disableHiding]="true">
+                <ng-template igxCellEditor let-cell="cell" #bloodTypeEditor>
+                  <igx-select [displayDensity]="grid.displayDensity"
+                              [(ngModel)]="cell.editValue"
+                              [igxFocus]="true">
+                    <igx-select-item *ngFor="let bloodType of ['A', 'B', 'AB', 'O']"
+                                     [value]="bloodType">
+                      {{ bloodType }}
+                    </igx-select-item>
+                  </igx-select>
+                </ng-template>
+                <ng-template igxExcelStyleMoving></ng-template>
+                <ng-template igxExcelStyleSorting></ng-template>
+              </igx-column>
+
+              <igx-column *ngSwitchDefault
+                          [field]="column.field"
+                          [dataType]="column.dataType"
+                          [editable]="column.editable"
+                          [filterable]="true"
+                          [groupable]="true"
+                          [movable]="true"
+                          [pinned]="false"
+                          [resizable]="true"
+                          [sortable]="true"
+                          [disableHiding]="true">
+                <ng-template igxExcelStyleMoving></ng-template>
+                <ng-template igxExcelStyleSorting></ng-template>
+              </igx-column>
+            </ng-container>
+          </ng-container>
+    </igx-grid>
+</div>

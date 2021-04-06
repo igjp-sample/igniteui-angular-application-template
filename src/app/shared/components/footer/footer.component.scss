@@ -1,0 +1,16 @@
+// @import 'variables/index';
+
+:host {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+footer {
+  text-align: center;
+  color: #ffffff;
+  background-color: #09f;
+}

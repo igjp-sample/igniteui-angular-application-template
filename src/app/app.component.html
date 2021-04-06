@@ -1,0 +1,9 @@
+<app-header (clicked)="onClicked()"></app-header>
+<div class="content">
+    <app-nav #nav></app-nav>
+    <main [style.width]="mainWidth">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+
+<app-footer></app-footer>

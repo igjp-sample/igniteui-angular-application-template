@@ -1,0 +1,61 @@
+<div class="widget-container">
+  <div class="widget__layout">
+    <igx-card class="widget">
+      <igx-card-header class="widget__header">
+        <h3 igxCardHeaderTitle>年齢層</h3>
+      </igx-card-header>
+      <igx-card-content class="widget__content">
+        <igx-data-chart [dataSource]="ageGroups$ | async"
+                        width="100%"
+                        height="100%">
+          <igx-category-x-axis #xAxis [name]="'xAxis'" [label]="'ageGroup'"></igx-category-x-axis>
+          <igx-numeric-y-axis #yAxis [name]="'yAxis'" [minimumValue]="0"></igx-numeric-y-axis>
+          <igx-column-series [xAxis]="xAxis"
+                             [yAxis]="yAxis"
+                             [valueMemberPath]="'count'"
+                             [showDefaultTooltip]="true"
+                             [isHighlightingEnabled]="true">
+          </igx-column-series>
+          <igx-category-item-highlight-layer></igx-category-item-highlight-layer>
+        </igx-data-chart>
+      </igx-card-content>
+    </igx-card>
+  </div>
+  <div class="widget__layout">
+    <igx-card class="widget">
+      <igx-card-header class="widget__header">
+        <h3 igxCardHeaderTitle>血液型</h3>
+      </igx-card-header>
+      <igx-card-content class="widget__content">
+        <igx-doughnut-chart width="100%" height="100%">
+          <igx-ring-series [dataSource]="bloodTypes$ | async"
+                            labelMemberPath="bloodType"
+                            valueMemberPath="count"
+                            legendLabelMemberPath="bloodType"
+                            [startAngle]="-90"
+                            [legend]="bloodTypesLegend">
+          </igx-ring-series>
+        </igx-doughnut-chart>
+        <igx-item-legend #bloodTypesLegend></igx-item-legend>
+      </igx-card-content>
+    </igx-card>
+    <igx-card class="widget">
+      <igx-card-header class="widget__header">
+        <h3 igxCardHeaderTitle>男女比率</h3>
+      </igx-card-header>
+      <igx-card-content class="widget__content">
+        <igx-pie-chart [dataSource]="genders$ | async"
+                        width="100%"
+                        height="100%"
+                        labelMemberPath="gender"
+                        valueMemberPath="count"
+                        legendLabelMemberPath="gender"
+                        [startAngle]="-90"
+                        [legend]="gendersLegend">
+        </igx-pie-chart>
+        <igx-item-legend #gendersLegend></igx-item-legend>
+      </igx-card-content>
+    </igx-card>
+  </div>
+</div>
+  
