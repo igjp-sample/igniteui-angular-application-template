@@ -11,7 +11,7 @@
         [exportExcelText]="'Excel'"
         [exportCsv]="true"
         [exportCsvText]="'CSV'"
-        (onToolbarExporting)="onToolbarExporting($event)"
+        (toolbarExporting)="onToolbarExporting($event)"
         [clipboardOptions]="clipboardOptions"
         >
 <igx-grid-toolbar>
@@ -76,10 +76,9 @@
                           [sortable]="true"
                           [disableHiding]="true">
                 <ng-template igxCellEditor let-cell="cell" #dateEditor>
-                  <igx-date-picker [mode]="'dropdown'"
-                                   [labelVisibility]="false"
+                  <igx-date-picker
                                    [locale]="grid.locale"
-                                   [mask]="'yyyy/MM/dd'"
+                                   [inputFormat]="'yyyy/MM/dd'"
                                    [ngModel]="cell.editValue | dateObject"
                                    (ngModelChange)="cell.editValue=$event"
                                    [igxFocus]="true">

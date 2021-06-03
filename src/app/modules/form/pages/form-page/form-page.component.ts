@@ -70,7 +70,7 @@ export class FormPageComponent implements OnInit {
 
     this.service.updateSingleItem(updatedItem);
 
-    this.snackbar.show();
+    this.snackbar.open();
   }
 
   isSelected(item: any): boolean {

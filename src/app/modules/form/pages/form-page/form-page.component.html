@@ -1,5 +1,5 @@
 <div style="display: flex;">
-  <igx-list style="flex: 0 0 200px;" (onItemClicked)="onItemClicked($event)">
+  <igx-list style="flex: 0 0 200px;" (itemClicked)="onItemClicked($event)">
     <div style="position: relative; height: 480px; overflow: hidden;">
       <igx-list-item [class.selected]="isSelected(item)" [index]="i"
                       *igxFor="let item of data$ | async; index as i;  scrollOrientation : 'vertical'; containerSize: '480px'; itemSize: '48px'">
@@ -34,9 +34,13 @@
       </igx-input-group>
     </div>
     <div class="form-row">
-      <igx-date-picker locale="ja-JP" [mode]="'dropdown'" [mask]="'yyyy/MM/dd'" formControlName="birthday"
+      <igx-date-picker locale="ja-JP"  [inputFormat]="'yyyy/MM/dd'" formControlName="birthday"
         class="form-row__control">
-        <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+        
+<!-- igxDatePickerTemplate has been removed.
+Label, prefix, suffix and hint can now be projected directly.
+See https://www.infragistics.com/products/ignite-ui-angular/angular/components/date-picker -->
+<ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
           <igx-input-group type="border" #dropDownTarget>
             <igx-prefix>
               <igx-icon>cake</igx-icon>
