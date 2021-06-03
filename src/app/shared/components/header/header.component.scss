@@ -6,7 +6,12 @@
     left: 0;
     z-index: 1;
 
-    ::ng-deep .igx-navbar__title {
-      color: white;
+    ::ng-deep {
+      .igx-navbar {
+        padding: 0 1em;
+      }
+      .igx-navbar__title {
+        color: white;
+      }
     }
   }

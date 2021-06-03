@@ -34,26 +34,16 @@
       </igx-input-group>
     </div>
     <div class="form-row">
-      <igx-date-picker locale="ja-JP"  [inputFormat]="'yyyy/MM/dd'" formControlName="birthday"
+      <igx-date-picker type="border" locale="ja-JP" required [inputFormat]="'yyyy/MM/dd'" [displayFormat]="'yyyy/M/d'" formControlName="birthday"
         class="form-row__control">
-        
-<!-- igxDatePickerTemplate has been removed.
-Label, prefix, suffix and hint can now be projected directly.
-See https://www.infragistics.com/products/ignite-ui-angular/angular/components/date-picker -->
-<ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-          <igx-input-group type="border" #dropDownTarget>
-            <igx-prefix>
-              <igx-icon>cake</igx-icon>
-            </igx-prefix>
-            <label igxLabel>生年月日</label>
-            <input #dateInput required igxInput [value]="displayData">
-            <igx-hint>例: 2019/01/01</igx-hint>
-            <igx-suffix>
-              <igx-icon (click)="openDialog(dropDownTarget.element.nativeElement)">today</igx-icon>
-              <igx-icon *ngIf="dateInput.value" (click)="dateInput.value = null; clear('birthday')">cancel</igx-icon>
-            </igx-suffix>
-          </igx-input-group>
-        </ng-template>
+        <label igxLabel>生年月日</label>
+        <igx-picker-toggle igxPrefix>
+          <igx-icon>cake</igx-icon>
+        </igx-picker-toggle>
+        <igx-hint>例: 2019/01/01</igx-hint>
+        <igx-picker-toggle igxSuffix>
+          <igx-icon>today</igx-icon>
+        </igx-picker-toggle>
       </igx-date-picker>
     </div>
     <div class="form-row form-row--nowrap">
